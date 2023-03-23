@@ -8,6 +8,7 @@ public class Configuration {
     public static final String INPUT = "i";
     public static final String OUTPUT = "o";
     public static final String MODE = "mode";
+    public static final String SHAPE = "shape";
     public static final String HELP = "help";
 
     private CommandLine cli;
@@ -57,6 +58,7 @@ public class Configuration {
         Options options = new Options();
         options.addOption(new Option(INPUT, true, "Input file"));
         options.addOption(new Option(OUTPUT, true, "Output file"));
+        options.addOption(new Option(SHAPE, "shape",true, "shape of the island"));
         options.addOption(new Option(MODE,"mode", true, "The mode of the mesh"));
         // Global help
         options.addOption(new Option(HELP, false, "print help message"));

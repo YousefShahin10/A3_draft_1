@@ -9,9 +9,19 @@ public class MyPolygon {
     private int id; 
     private List <Integer> segments;
     private int centroidId;
+    private double elevation;
 
     public MyPolygon (){
+        //default value is at sea Level
+        elevation = 0;
+    }
 
+    public void setElevation(double elevation){
+        this.elevation = elevation;
+    }
+
+    public double getElevation(){
+        return this.elevation;
     }
 
     public void setCentroidId(int centroidId){
