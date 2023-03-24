@@ -1,5 +1,6 @@
 import java.util.Map;
 
+import colors.IslandColors;
 import meshcomponents.MyMesh;
 import modes.Lagoon;
 
@@ -18,17 +19,17 @@ public class IslandGenerator {
         if(configuration.get("shape").equals("circle")){
             Circle circle = new Circle(400, mesh.getApproxCenterX(), mesh.getApproxCenterY());
         
-            circle.setBorderColor(new Color(255, 217, 150));
-            circle.setInsideColor(new Color(40, 168, 17));
-            circle.setOutsideColor(new Color(92, 74, 255));
+            circle.setBorderColor(IslandColors.BEACH);
+            circle.setInsideColor(IslandColors.LAND);
+            circle.setOutsideColor(IslandColors.OCEAN);
 
             circle.draw(mesh);
         }else{
             Circle circle = new Circle(400, mesh.getApproxCenterX(), mesh.getApproxCenterY());
         
-            circle.setBorderColor(new Color(255, 217, 150));
-            circle.setInsideColor(new Color(40, 168, 17));
-            circle.setOutsideColor(new Color(92, 74, 255));
+            circle.setBorderColor(IslandColors.BEACH);
+            circle.setInsideColor(IslandColors.LAND);
+            circle.setOutsideColor(IslandColors.OCEAN);
 
             circle.draw(mesh);
         }
@@ -36,6 +37,8 @@ public class IslandGenerator {
         if(configuration.get("mode").equals("lagoon")){
             Lagoon lagoonIsland = new Lagoon();
             lagoonIsland.generate(mesh);
+        }else{
+            //custom island
         }
     }
 }

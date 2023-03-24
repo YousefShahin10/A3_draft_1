@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+import colors.IslandColors;
 import shapes.Circle;
 
 import meshcomponents.MyMesh;
@@ -13,8 +14,8 @@ public class Lagoon {
     public void generate(MyMesh mesh){
         Circle circle = new Circle(radius, mesh.getApproxCenterX(), mesh.getApproxCenterY());
         
-        circle.setBorderColor(new Color(255, 217, 150));
-        circle.setInsideColor(new Color(174, 187, 252));
+        circle.setBorderColor(IslandColors.BEACH);
+        circle.setInsideColor(IslandColors.LAGOON);
 
         circle.draw(mesh);
     }  
