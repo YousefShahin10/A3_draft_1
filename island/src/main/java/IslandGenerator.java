@@ -1,5 +1,6 @@
 import java.util.Map;
 
+import aquifers.AquiferGenerator;
 import colors.IslandColors;
 import lakes.Lake;
 import meshcomponents.MyMesh;
@@ -43,6 +44,12 @@ public class IslandGenerator {
                 Lake lake = new Lake();
 
                 lake.createLakes(mesh, Integer.parseInt(configuration.get("lakes")));
+            }
+
+            if(!configuration.get("aquifiers").isEmpty()){
+                AquiferGenerator ag = new AquiferGenerator();
+
+                ag.createAquifiers(mesh, Integer.parseInt(configuration.get("aquifiers")));
             }
         }else{
             //custom island

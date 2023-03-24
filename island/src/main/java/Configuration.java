@@ -12,6 +12,7 @@ public class Configuration {
     public static final String ELEVATION = "elevation";
     public static final String RIVERS = "rivers";
     public static final String LAKES = "lakes";
+    public static final String AQUIFIERS = "aquifiers";
     public static final String HELP = "help";
 
     private CommandLine cli;
@@ -66,6 +67,7 @@ public class Configuration {
         options.addOption(new Option(ELEVATION,"elevation", true, "The elevation profile of the mesh"));
         options.addOption(new Option(RIVERS,"rivers", true, "The number of rivers in the mesh"));
         options.addOption(new Option(LAKES,"lakes", true, "The number of lakes in the mesh"));
+        options.addOption(new Option(AQUIFIERS,"aquifiers", true, "The number of aquifiers in the mesh"));
         
         // Global help
         options.addOption(new Option(HELP, false, "print help message"));
