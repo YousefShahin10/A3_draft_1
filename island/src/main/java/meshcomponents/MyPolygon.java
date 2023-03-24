@@ -10,10 +10,22 @@ public class MyPolygon {
     private List <Integer> segments;
     private int centroidId;
     private double elevation;
+    private double humidity;
 
     public MyPolygon (){
         //default value is at sea Level
-        elevation = 0;
+        this.elevation = 0;
+
+        //default humidity in room is 30%
+        this.humidity = 0.3;
+    }
+
+    public void increaseHumidity(){
+        this.humidity += 0.1;
+    }
+
+    public double getHumidity(){
+        return this.humidity;
     }
 
     public void setElevation(double elevation){
