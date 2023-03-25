@@ -11,6 +11,9 @@ public class MyPolygon {
     private int centroidId;
     private double elevation;
     private double humidity;
+    private double soilAbsorptionLevel;
+    private boolean aquifer;
+
 
     public MyPolygon (){
         //default value is at sea Level
@@ -18,10 +21,32 @@ public class MyPolygon {
 
         //default humidity in room is 30%
         this.humidity = 0.3;
+
+        //default water level in soil
+        this.soilAbsorptionLevel = 0.25;
+
+        //not a aquifier
+        aquifer = false;
+    }
+
+    public boolean isAquifier(){
+        return this.aquifer;
+    }
+
+    public void setAquifier(boolean aquifier){
+        this.aquifer = aquifier;
+    }
+
+    public void setSoilAbsorptionLevel(double soilAbsorptionLevel){
+        if(this.soilAbsorptionLevel < 1)this.soilAbsorptionLevel += soilAbsorptionLevel;
+    }
+
+    public double getSoilAbsorptionLevel(){
+        return this.soilAbsorptionLevel;
     }
 
     public void increaseHumidity(){
-        this.humidity += 0.1;
+        if(this.humidity < 1)this.humidity += 0.05;
     }
 
     public double getHumidity(){

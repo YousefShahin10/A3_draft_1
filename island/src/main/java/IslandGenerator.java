@@ -8,8 +8,6 @@ import modes.Lagoon;
 
 import shapes.Circle;
 
-import java.awt.Color;
-
 public class IslandGenerator {
     private Map<String, String> configuration;
 

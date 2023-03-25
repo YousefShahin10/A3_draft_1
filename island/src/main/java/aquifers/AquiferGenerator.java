@@ -23,6 +23,8 @@ public class AquiferGenerator {
 
             MyPolygon aquifer = landTiles.get(target);
 
+            aquifer.setAquifier(true);
+
 
             for(int neighbour : aquifer.getNeighbours()){
                 if(mesh.getPolygons().get(neighbour).getColor().equals(IslandColors.LAND)){
