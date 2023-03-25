@@ -8,14 +8,14 @@ import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
 import meshcomponents.MyMesh;
 import meshcomponents.MyPolygon;
 
-public class Volcano extends Elevation{
+public class Mountain extends Elevation{
     private double centreX;
     private double centreY;
     private int layers;
     private double radius;
     private double maxElevation;
 
-    public Volcano(double centreX, double centreY, int layers, double maxElevation){
+    public Mountain(double centreX, double centreY, int layers, double maxElevation){
         this.centreX = centreX;
         this.centreY = centreY;
         this.layers = layers;

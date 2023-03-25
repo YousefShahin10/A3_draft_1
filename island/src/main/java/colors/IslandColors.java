@@ -10,8 +10,9 @@ public class IslandColors {
     public static final Color LAKE = new Color(52, 207, 235);
 
     //Biomes , fields, mangroves, tundra, beach
-    public static final Color BIOME_FORESTS = new Color(52, 207, 235);
-    public static final Color BIOME_FIELDS = new Color(52, 207, 235);
-    public static final Color BIOME_MANGROVES = new Color(52, 207, 235);
-    public static final Color BIOME_TUNDRA = new Color(52, 207, 235);
+    public static final Color BIOME_RAIN_FOREST = new Color(3, 156, 69);
+    public static final Color BIOME_SEASONAL_FORREST = new Color(74, 255, 152);
+    public static final Color BIOME_DESSERT = new Color(252, 252, 53);
+    public static final Color BIOME_SUBTROPICAL_DESSERT = new Color(252, 216, 53);
+    public static final Color BIOME_TUNDRA = new Color(102, 237, 255);
 }

@@ -30,21 +30,8 @@ public class Lake {
                 for(int neighbour : lake.getNeighbours()){
                     if(mesh.getPolygons().get(neighbour).getColor().equals(IslandColors.LAND)){
                         mesh.getPolygons().get(neighbour).setColor(IslandColors.LAKE);
-
-                        for(int secondaryNeighbours : mesh.getPolygons().get(neighbour).getNeighbours()){
-                            if(mesh.getPolygons().get(secondaryNeighbours).getColor().equals(IslandColors.LAND)){
-                                mesh.getPolygons().get(secondaryNeighbours).increaseHumidity();
-                            }
-                        }
-
                         break;
                     }
-                }
-            }
-
-            for(int neighbour : lake.getNeighbours()){
-                if(mesh.getPolygons().get(neighbour).getColor().equals(IslandColors.LAND)){
-                    mesh.getPolygons().get(neighbour).increaseHumidity();
                 }
             }
 

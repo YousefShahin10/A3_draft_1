@@ -12,15 +12,18 @@ public class BasicSoil extends Soil{
     public void function(MyPolygon mp, MyMesh mesh){
         for(MyPolygon poly : mesh.getPolygons()){
             if(poly.getColor().equals(IslandColors.LAND)){
-                double weight = 0;
+                double weight = 0.1;
 
-                for(Vertex v : this.water){
-                    weight += distance(v, mesh.getVertexs().get(poly.getCentroidId()));
+                for(Vertex v : this.lakes){
+                    weight += 1/((distance(v, mesh.getVertexs().get(poly.getCentroidId())))/600);
                 }
                 
-                weight*=0.1;
+                
+                for(Vertex v : this.aquifiers){
+                    weight += 0.6/((distance(v, mesh.getVertexs().get(poly.getCentroidId()))));
+                }
 
-                poly.setSoilAbsorptionLevel(weight);
+                mp.setHumidity(weight);
             }
         }
     }//end method function

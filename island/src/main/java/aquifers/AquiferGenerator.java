@@ -25,13 +25,6 @@ public class AquiferGenerator {
 
             aquifer.setAquifier(true);
 
-
-            for(int neighbour : aquifer.getNeighbours()){
-                if(mesh.getPolygons().get(neighbour).getColor().equals(IslandColors.LAND)){
-                    mesh.getPolygons().get(neighbour).increaseHumidity();
-                }
-            }
-
             landTiles.remove(aquifer);
         }
     }
