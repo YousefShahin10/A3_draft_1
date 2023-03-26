@@ -8,7 +8,7 @@ import meshcomponents.MyMesh;
 import meshcomponents.MyPolygon;
 import meshcomponents.MyVertex;
 
-public class BasicSoil extends Soil{
+public class DessertSoil extends Soil{
     
     public void function(MyMesh mesh){
         for(MyPolygon poly : mesh.getPolygons()){
@@ -16,13 +16,19 @@ public class BasicSoil extends Soil{
                 double weight = 0.1;
 
                 for(MyVertex v : this.lakes){
-                    weight += 10/((distance(v, mesh.getVertexs().get(poly.getCentroidId())))/5);
-                }
+                    weight += 1/((distance(v, mesh.getVertexs().get(poly.getCentroidId())))/5);
+                }//end for loop
                 
                 
                 for(MyVertex v : this.aquifiers){
-                    weight += 6/((distance(v, mesh.getVertexs().get(poly.getCentroidId())))/5);
-                }
+                    weight += 0.6/((distance(v, mesh.getVertexs().get(poly.getCentroidId())))/5);
+                }//end for loop
+
+                if(poly.getElevation() > 0){
+                    weight -= 0.1;
+                }else{
+                    weight += 0.1;
+                }//end if else tree
 
                 poly.setHumidity(weight);
             }

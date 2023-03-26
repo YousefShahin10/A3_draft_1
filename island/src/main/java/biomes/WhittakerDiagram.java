@@ -13,10 +13,7 @@ public abstract class WhittakerDiagram {
     protected int scaleY; //humidity
     protected int scaleX; //elevation
 
-
     public abstract String[][] createDiagram();
-
-    public abstract String function(MyPolygon mp);
 
     public void generateBiomes(MyMesh mesh){
         for(MyPolygon mp : mesh.getPolygons()){
@@ -24,9 +21,33 @@ public abstract class WhittakerDiagram {
                 BiomeList bl = new BiomeList();
 
                 String key = function(mp);
-
+                
                 mp.setColor(bl.getBiome(key));
             }
         }
     }
+
+    public String function(MyPolygon mp){
+        int row = (int)((Math.ceil((mp.getHumidity()/0.2))));
+
+        if(row > this.diagram.length){
+            row = 0;
+        }else{
+            row = this.diagram.length - row;
+        }
+
+        int col = (int)((Math.ceil((mp.getElevation()/100))));
+
+        if(row > this.diagram[0].length){System.out.println(true);
+            col = this.diagram[0].length - 1;
+        }else{
+            if(col>0){
+                col = col - 1;
+            }else{
+                col = 0;
+            }
+        }//end if-else
+
+        return this.diagram[row][col];
+    }//end of function
 }//end class WhittakerDiagram

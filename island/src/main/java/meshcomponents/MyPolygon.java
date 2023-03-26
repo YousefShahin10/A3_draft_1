@@ -34,7 +34,7 @@ public class MyPolygon {
         this.aquifer = aquifier;
 
         if(aquifier){
-            this.humidity = 0.6;
+            this.humidity = 0.7;
         }
     }
 
@@ -105,5 +105,4 @@ public class MyPolygon {
     public void setSegments(List<Integer> segments) {
         this.segments = segments;
     }
-
 }

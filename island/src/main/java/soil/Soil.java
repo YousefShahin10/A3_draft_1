@@ -2,6 +2,7 @@ package soil;
 
 import meshcomponents.MyMesh;
 import meshcomponents.MyPolygon;
+import meshcomponents.MyVertex;
 
 import java.util.List;
 
@@ -12,8 +13,8 @@ import colors.IslandColors;
 import java.util.ArrayList;
 
 public abstract class Soil {
-    List <Vertex> lakes;
-    List <Vertex> aquifiers; 
+    List <MyVertex> lakes;
+    List <MyVertex> aquifiers; 
 
     public void createComposition(MyMesh mesh){
         this.lakes = new ArrayList<>();
@@ -21,11 +22,7 @@ public abstract class Soil {
 
         addWater(mesh);
 
-        for(MyPolygon mp : mesh.getPolygons()){
-            if(mp.getColor().equals(IslandColors.LAND)){
-                function(mp, mesh);
-            }
-        }
+        function(mesh);
     }
 
     private void addWater(MyMesh mesh) {
@@ -38,5 +35,5 @@ public abstract class Soil {
         }
     }
 
-    public abstract void function(MyPolygon mp, MyMesh mesh);
+    public abstract void function(MyMesh mesh);
 }

@@ -1,7 +1,15 @@
 package shapes;
 
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
+
+import ca.mcmaster.cas.se2aa4.a2.io.Structs.Segment;
+import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
 import meshcomponents.MyMesh;
+import meshcomponents.MyPolygon;
+import meshcomponents.MySegment;
+import meshcomponents.MyVertex;
 
 public abstract class Shape {
     Color insideColor = null;
@@ -10,7 +18,28 @@ public abstract class Shape {
     double centerX;
     double centerY;
 
+    public void draw(MyMesh mesh){
+        for(MyPolygon mp : mesh.getPolygons()){
+            List <MyVertex> vs = new ArrayList<>();
 
+            for(int segment : mp.getSegments()){
+                MySegment seg = mesh.getSegments().get(segment);
+
+                vs.add(seg.getV1());
+                vs.add(seg.getV2());
+            }
+
+            int result = inside(vs);
+
+            if(result == 0 && this.borderColor != null){
+                mp.setColor(this.borderColor );
+            }else if(result == 1 && this.outsideColor != null){
+                mp.setColor(this.outsideColor);
+            }else if(result == -1 && this.insideColor != null){
+                mp.setColor(this.insideColor);
+            }
+        }
+    }
 
     public Color getInsideColor() {
         return this.insideColor;
@@ -43,7 +72,7 @@ public abstract class Shape {
     public double getCenterY() {
         return this.centerY;
     }
-    
 
-    public abstract void draw(MyMesh mesh);
+    public abstract int inside(List <MyVertex> vs);
+    
 }
