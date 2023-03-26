@@ -19,10 +19,10 @@ public class AquiferGenerator {
             }
         }
 
-        for(int i = 0; i < numberOfAquifers; i++){
-            int target = randomIsland(landTiles.size(), seed);
+        List <Integer> nums = randomIsland(numberOfAquifers, landTiles.size(), seed);
 
-            MyPolygon aquifer = landTiles.get(target);
+        for(int n : nums){
+            MyPolygon aquifer = landTiles.get(n);
 
             aquifer.setAquifier(true);
 
@@ -32,13 +32,19 @@ public class AquiferGenerator {
         }
     }
 
-    private int randomIsland(int numberOfLand, int seed){
+    private List <Integer> randomIsland(int n, int numberOfLand, int seed){
         Random bag = new Random();
+
+        List <Integer> nums = new ArrayList<>();
 
         if(seed != -1){
             bag.setSeed(seed);
         }
 
-        return bag.nextInt(numberOfLand);
+        for(int i = 0; i < n; i++){
+            nums.add(bag.nextInt(numberOfLand));
+        }
+
+        return nums;
     }
 }

@@ -72,10 +72,12 @@ public class IslandGenerator {
             }
 
             //custom island
-            if(configuration.get("altitude").equals("mountain")){
-                Mountain m = new Mountain(mesh.getApproxCenterX(), mesh.getApproxCenterY(), 5, 600);
-                m.createElevation(mesh);
-            } else if(configuration.get("altitude").equals("valley")){
+            if(configuration.get("altitude") != null){
+                if(configuration.get("altitude").equals("mountain")){
+                    Mountain m = new Mountain(mesh.getApproxCenterX(), mesh.getApproxCenterY(), 5, 600);
+                    m.createElevation(mesh);
+                }
+            }else if(configuration.get("altitude").equals("valley")){
                 Valley m = new Valley(mesh.getApproxCenterX(), mesh.getApproxCenterY(), 5, 600);
                 m.createElevation(mesh);
             }

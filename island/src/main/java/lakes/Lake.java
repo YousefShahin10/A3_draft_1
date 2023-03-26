@@ -18,13 +18,15 @@ public class Lake {
             }
         }
 
-        for(int i = 0; i < numberOfLakes; i++){
-            System.out.println(seed);
-            int target = randomIsland(landTiles.size(), seed);
-            System.out.println(target);
-            int size = lakeSize();
+        List <Integer> nums = randomIsland(numberOfLakes, landTiles.size(), seed);
 
-            MyPolygon lake = landTiles.get(target);
+        for(int n : nums){
+            // System.out.println(seed);
+            // int target = randomIsland(landTiles.size(), seed);
+            // System.out.println(target);
+            int size = lakeSize(seed);
+
+            MyPolygon lake = landTiles.get(n);
 
             lake.setColor(IslandColors.LAKE);
 
@@ -41,18 +43,28 @@ public class Lake {
         }
     }
 
-    private int randomIsland(int numberOfLand, int seed){
+    private List <Integer> randomIsland(int n, int numberOfLand, int seed){
         Random bag = new Random();
+
+        List <Integer> nums = new ArrayList<>();
 
         if(seed != -1){
             bag.setSeed(seed);
         }
 
-        return bag.nextInt(numberOfLand);
+        for(int i = 0; i < n; i++){
+            nums.add(bag.nextInt(numberOfLand));
+        }
+
+        return nums;
     }
 
-    private int lakeSize(){
+    private int lakeSize(int seed){
         Random bag = new Random();
+
+        if(seed != -1){
+            bag.setSeed(seed);
+        }
 
         return bag.nextInt(3);
     }

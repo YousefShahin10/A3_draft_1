@@ -50,9 +50,9 @@ public class GraphicRenderer implements Renderer {
             
             Optional<Color> fill = new ColorProperty().extract(s.getPropertiesList());
 
-            // int weight = extractWeight(s.getPropertiesList());
+            int weight = extractWeight(s.getPropertiesList());
 
-            // canvas.setStroke(new BasicStroke(weight));
+            canvas.setStroke(new BasicStroke(weight));
             canvas.setColor(fill.get());
             Line2D line = new Line2D.Double(new Point2D.Double(v1x, v1y), new Point2D.Double(v2x, v2y));
             canvas.draw(line);

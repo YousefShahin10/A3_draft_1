@@ -27,6 +27,7 @@ public class Riverflow {
         MyVertex temp = current;
 
         List <MySegment> vistited = new ArrayList<>();
+        List <MyVertex> visitedV = new ArrayList<>();
 
         boolean run = true;
 
@@ -36,14 +37,20 @@ public class Riverflow {
 
                 if(vistited.contains(ms)){
                     break;
-                }
+                }if(visitedV.contains(ms.getV1()) && visitedV.contains(ms.getV2()))continue;
                 // if(ms.getColor() != null)if(ms.getColor().equals(IslandColors.RIVER))continue;
 
                 if(((ms.getV1().getX() == current.getX())&&(ms.getV1().getY() == current.getY())) || ((ms.getV2().getX() == current.getX())&&(ms.getV2().getY() == current.getY()))){
                     if(ms.getElevation() <= current.getElevation()){
                         vistited.add(ms);
+
+                        visitedV.add(ms.getV1());
+                        visitedV.add(ms.getV2());
+                        
                         ms.setColor(IslandColors.RIVER);
                         ms.setWeight(ms.getWeight() + 5);
+
+
                     
                         if(ms.getV1() == current){
                             System.out.println("help");
