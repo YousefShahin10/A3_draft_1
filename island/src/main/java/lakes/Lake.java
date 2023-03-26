@@ -19,7 +19,9 @@ public class Lake {
         }
 
         for(int i = 0; i < numberOfLakes; i++){
+            System.out.println(seed);
             int target = randomIsland(landTiles.size(), seed);
+            System.out.println(target);
             int size = lakeSize();
 
             MyPolygon lake = landTiles.get(target);

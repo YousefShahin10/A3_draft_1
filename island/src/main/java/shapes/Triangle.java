@@ -23,13 +23,13 @@ public class Triangle extends Shape {
         double halfSide = sideLength / 2;
 
         double middleBase = this.centerX;
+        double middleBaseY = this.centerY+halfSide;
 
-        //System.out.println(middleBase);
         for(MyVertex v : vs){
 
-            double expectedValY = expectedY(middleBase, v.getX());
+            double expectedValY = expectedY(v.getX());
 
-            if (expectedValY < v.getY() && middleBase > v.getY() &&
+            if (expectedValY-halfSide < v.getY() && middleBaseY > v.getY() &&
                     v.getX() > (this.centerX-halfSide) && v.getX() < (this.centerX+halfSide)){
                 in = true;
             } else{
@@ -44,21 +44,15 @@ public class Triangle extends Shape {
             return 1;
         }
     }
-    private double expectedY(double middleBase, double x) {
-        //double height = (this.sideLength)/2 * Math.sin(Math.toRadians(60));
-        //double heightPoint = height + centerY;
-        //System.out.println(height);
-        //System.out.println(heightPoint);
+    private double expectedY(double x) {
         double y =0;
 
         double height = (this.sideLength)/2 * Math.sin(Math.toRadians(60));
         if (x <= this.centerX){
-            //double b = height/(centerX*rightSlope());
             double b = -(this.centerX+(this.sideLength/2)) * rightSlope();
             y = (rightSlope()*x) + b;
 
         }else if (x > this.centerX){
-            //double b = height/(centerX*leftSlope());
             double b = (this.centerX-(this.sideLength/2)) * rightSlope();
             y = (leftSlope()*x) + b;
         }
@@ -71,7 +65,6 @@ public class Triangle extends Shape {
     private double rightSlope(){
         double height = this.sideLength * Math.sin(Math.toRadians(60));
         double slope = (-height/(this.sideLength/2));
-        //System.out.println(slope);
         return slope;
     }
     private double leftSlope(){

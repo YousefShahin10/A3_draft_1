@@ -4,8 +4,10 @@ import java.util.Random;
 
 import aquifers.AquiferGenerator;
 import biomes.KingsFort;
+import biomes.Macanada;
 import colors.IslandColors;
 import elevation.Mountain;
+import elevation.Valley;
 import lakes.Lake;
 import meshcomponents.MyMesh;
 import meshcomponents.MySegment;
@@ -73,6 +75,9 @@ public class IslandGenerator {
             if(configuration.get("altitude").equals("mountain")){
                 Mountain m = new Mountain(mesh.getApproxCenterX(), mesh.getApproxCenterY(), 5, 600);
                 m.createElevation(mesh);
+            } else if(configuration.get("altitude").equals("valley")){
+                Valley m = new Valley(mesh.getApproxCenterX(), mesh.getApproxCenterY(), 5, 600);
+                m.createElevation(mesh);
             }
 
             if(!configuration.get("rivers").isEmpty()){
@@ -99,7 +104,7 @@ public class IslandGenerator {
                 BasicSoil bs = new BasicSoil();
 
                 bs.createComposition(mesh);
-            }else if(configuration.get("soil").equals("basicsoil")){
+            }else if(configuration.get("soil").equals("dessetsoil")){
                 DessertSoil ds = new DessertSoil();
 
                 ds.createComposition(mesh);
@@ -111,6 +116,10 @@ public class IslandGenerator {
 
             if(configuration.get("biomes").equals("kingsfort")){
                 KingsFort kf = new KingsFort();
+
+                kf.generateBiomes(mesh);
+            }else if(configuration.get("biomes").equals("macanada")) {
+                Macanada kf = new Macanada();
 
                 kf.generateBiomes(mesh);
             }else{

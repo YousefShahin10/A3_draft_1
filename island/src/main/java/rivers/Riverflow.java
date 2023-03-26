@@ -43,7 +43,7 @@ public class Riverflow {
                     if(ms.getElevation() <= current.getElevation()){
                         vistited.add(ms);
                         ms.setColor(IslandColors.RIVER);
-                        ms.setWeight(ms.getWeight() + 2);
+                        ms.setWeight(ms.getWeight() + 5);
                     
                         if(ms.getV1() == current){
                             System.out.println("help");
